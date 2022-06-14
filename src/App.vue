@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main @click="startTimer = !startTimer">
     <div class="auth" v-if="!token">
       Авторизация...
     </div>
@@ -26,6 +26,7 @@ export default defineComponent({
     let rublePerMin = 10;
     let currentTimer = ref(0);
     let lastAlertId = 0;
+    let startTimer = ref(false);
 
     if (hash.has('rublePerMin')) {
       rublePerMin = parseInt(hash.get('rublePerMin'));
@@ -95,7 +96,16 @@ export default defineComponent({
       checkLastDonates();
     }, 5000);
 
-    return {token, currentTimer, timer}
+    setInterval(() => {
+      if (startTimer.value) {
+        if (currentTimer.value > 0) {
+          currentTimer.value--;
+          localStorage.setItem('timer', currentTimer.value);
+        }
+      }
+    }, 1000);
+
+    return {token, currentTimer, timer, startTimer}
   }
 })
 </script>
