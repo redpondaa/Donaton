@@ -20,7 +20,7 @@ export default defineComponent({
 
   setup() {
     const appId = 9628;
-    const redirectUrl = 'http://toopenya.github.io/Donaton/'
+    const redirectUrl = 'https://toopenya.github.io/Donaton/'
     const hash = new URLSearchParams((new URL(window.location.toString())).hash.slice(1));
 
     let rublePerMin = 10;
