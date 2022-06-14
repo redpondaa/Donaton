@@ -20,7 +20,7 @@ export default defineComponent({
 
   setup() {
     const appId = 9628;
-    const redirectUrl = 'http%3A%2F%2Flocalhost%3A8080'
+    const redirectUrl = 'http://toopenya.github.io/Donaton/'
     const hash = new URLSearchParams((new URL(window.location.toString())).hash.slice(1));
 
     let rublePerMin = 10;
@@ -54,7 +54,7 @@ export default defineComponent({
     let token = hash.get('access_token');
 
     if (!token) {
-      window.location = `https://www.donationalerts.com/oauth/authorize?client_id=${appId}&redirect_uri=${redirectUrl}&response_type=token&scope=oauth-donation-subscribe oauth-donation-index oauth-user-show`
+      window.location = `https://www.donationalerts.com/oauth/authorize?client_id=${appId}&redirect_uri=${encodeURI(redirectUrl)}&response_type=token&scope=oauth-donation-subscribe oauth-donation-index oauth-user-show`
     }
 
     const checkLastDonates = async () => {
