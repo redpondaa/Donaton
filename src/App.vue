@@ -88,8 +88,8 @@ export default defineComponent({
     }
 
     const timer = computed(() => {
-      const days = (currentTimer.value / (24 * 60 * 60)).toFixed(0);
-      return `${days > 1 ? days-1 : 0}d ${new Date(currentTimer.value * 1000).toISOString().substr(11, 8)}`;
+      const days = (currentTimer.value / (24 * 60 * 60));
+      return `${Math.floor(days)}d ${new Date(currentTimer.value * 1000).toISOString().substr(11, 8)}`;
     });
 
     checkLastDonates();
