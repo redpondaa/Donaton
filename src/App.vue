@@ -19,8 +19,8 @@ export default defineComponent({
   components: {},
 
   setup() {
-    const appId = 9628;
-    const redirectUrl = 'https://toopenya.github.io/Donaton/'
+    const appId = 10977;
+    const redirectUrl = 'https://redpondaa.github.io/Donaton/'
     const hash = new URLSearchParams((new URL(window.location.toString())).hash.slice(1));
 
     let rublePerMin = 10;
@@ -88,7 +88,8 @@ export default defineComponent({
     }
 
     const timer = computed(() => {
-      return new Date(currentTimer.value * 1000).toISOString().substr(11, 8);
+      const days = (currentTimer.value / (24 * 60 * 60)).toFixed(0);
+      return `${days > 1 ? days-1 : 0}d ${new Date(currentTimer.value * 1000).toISOString().substr(11, 8)}`;
     });
 
     checkLastDonates();
